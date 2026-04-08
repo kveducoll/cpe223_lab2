@@ -1,0 +1,59 @@
+# Maven build output
+/target/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# IntelliJ IDEA
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Maven wrapper
+/.mvn/wrapper/maven-wrapper.jar
+
+# local environment
+.env
+
+# Java artifact files
+*.jar
+*.war
+*.ear
+
+# Generated files
+generated-sources/
+
+# IDE specific files
+*.class
+
+# Java coverage
+*.ec
+*.ecf
+*.ecx
+*.jacoco
+
+# Package distribution
+*.zip
+*.tar.gz
+*.tar
+*.7z
