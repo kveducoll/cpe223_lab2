@@ -48,19 +48,19 @@ public class App extends Application {
         // Polygon
 
         // Circle
-        int samuraiSize = 3;
+        int samuraiSize = 3; // Scaling
         boolean isToyota[] = {true};
 
         Circle samurai = new Circle();
-        samurai.setCenterX(100.0f*samuraiSize);
-        samurai.setCenterY(100.0f*samuraiSize);
-        samurai.setRadius(50.0f*samuraiSize);
+        samurai.setCenterX(100.0f * samuraiSize);
+        samurai.setCenterY(100.0f * samuraiSize);
+        samurai.setRadius(50.0f   * samuraiSize);
         samurai.setFill(Color.RED);
         Text circleDesc = Candy.quickText("CIRCLE\n(JAPAN)", dFont, 18, true, "#ffffff");
 
         samurai.setOnMouseClicked(event -> {
 
-            if (isZabka[0]) {
+            if (isToyota[0]) {
                 circleDesc.setText("JAVA");
                 circleDesc.setFill(Color.WHITE);
                 samurai.setFill(Color.BLACK);
@@ -69,19 +69,49 @@ public class App extends Application {
                 circleDesc.setFill(Color.web("#ffffff"));
                 samurai.setFill(Color.RED);
             }
-            isZabka[0] = !isZabka[0];
+            isToyota[0] = !isToyota[0];
 
         });
         // Circle
+
+        // Ellipse
+        boolean isWallmart[] = {true};
+        int truckSize = 4; // Scaling
+        Ellipse footBall = new Ellipse();
+        footBall.setCenterX(50.0f * truckSize);
+        footBall.setCenterY(50.0f * truckSize);
+        footBall.setRadiusX(50.0f * truckSize);
+        footBall.setRadiusY(25.0f * truckSize);
+        footBall.setFill(Color.web("#ec6b01"));
+        Text ellipseDesc = Candy.quickText("Ellipse\n(Football)", dFont, 18, true, "#ffffff");
+
+
+        footBall.setOnMouseClicked(event -> {
+
+            if (isWallmart[0]) {
+                ellipseDesc.setText("REYES");
+                ellipseDesc.setFill(Color.WHITE);
+                footBall.setFill(Color.BLACK);
+            } else {
+                ellipseDesc.setText("ELLIPSE\n(Football)");
+                ellipseDesc.setFill(Color.web("#ffffff"));
+                footBall.setFill(Color.web("#ec6b01"));
+            }
+            isWallmart[0] = !isWallmart[0];
+
+        });
+
+        // Ellipse
         
         // Display Config
         HBox box = new HBox(75);
         box.setAlignment(Pos.CENTER);
 
-        StackPane poland = new StackPane(iluvpoland, polyDesc);
-        StackPane japan = new StackPane(samurai, circleDesc);
-
-        box.getChildren().addAll(poland, japan);
+        StackPane poland    = new StackPane(iluvpoland, polyDesc);
+        StackPane japan     = new StackPane(samurai,    circleDesc);
+        StackPane america   = new StackPane(footBall,   ellipseDesc);
+        
+        box.getChildren().addAll(poland, japan, america);
 
         scene = new Scene(box, screenX, screenY);
         stage.setScene(scene);
@@ -110,5 +140,6 @@ public class App extends Application {
     REFERENCES:
     https://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Polygon.html
     https://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/Color.html
+    https://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Ellipse.html
 
 */
