@@ -27,14 +27,15 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        boolean isNotToggled[] = {true, true, true};
+
         // Polygon
-        boolean isZabka[] = {true};
         Polygon iluvpoland = PolygonConfig.piatos(4.5);
         Text polyDesc = Candy.quickText("POLYGON\n(PIATOS)", dFont, 18, true, "#0317ca");
 
         iluvpoland.setOnMouseClicked(event -> {
 
-            if (isZabka[0]) {
+            if (isNotToggled[0]) {
                 polyDesc.setText("KARL\nVINCE");
                 polyDesc.setFill(Color.WHITE);
                 iluvpoland.setFill(Color.BLACK);
@@ -43,14 +44,13 @@ public class App extends Application {
                 polyDesc.setFill(Color.web("#0317ca"));
                 iluvpoland.setFill(Color.YELLOW);
             }
-            isZabka[0] = !isZabka[0];
+            isNotToggled[0] = !isNotToggled[0];
 
         });
         // Polygon
 
         // Circle
         int samuraiSize = 3; // Scaling
-        boolean isToyota[] = {true};
 
         Circle samurai = new Circle();
         samurai.setCenterX(100.0f * samuraiSize);
@@ -62,7 +62,7 @@ public class App extends Application {
 
         samurai.setOnMouseClicked(event -> {
 
-            if (isToyota[0]) {
+            if (isNotToggled[1]) {
                 circleDesc.setText("JAVA");
                 circleDesc.setFill(Color.WHITE);
                 samurai.setFill(Color.BLACK);
@@ -71,13 +71,12 @@ public class App extends Application {
                 circleDesc.setFill(Color.web("#ffdbfd"));
                 samurai.setFill(Color.RED);
             }
-            isToyota[0] = !isToyota[0];
+            isNotToggled[1] = !isNotToggled[1];
 
         });
         // Circle
 
         // Ellipse
-        boolean isWallmart[] = {true};
         int truckSize = 4; // Scaling
         Ellipse footBall = new Ellipse();
         footBall.setCenterX(50.0f * truckSize);
@@ -90,7 +89,7 @@ public class App extends Application {
 
         footBall.setOnMouseClicked(event -> {
 
-            if (isWallmart[0]) {
+            if (isNotToggled[2]) {
                 ellipseDesc.setText("REYES");
                 ellipseDesc.setFill(Color.WHITE);
                 footBall.setFill(Color.BLACK);
@@ -99,7 +98,7 @@ public class App extends Application {
                 ellipseDesc.setFill(Color.web("#ffffff"));
                 footBall.setFill(Color.web("#ec6b01"));
             }
-            isWallmart[0] = !isWallmart[0];
+            isNotToggled[2] = !isNotToggled[2];
 
         });
 
