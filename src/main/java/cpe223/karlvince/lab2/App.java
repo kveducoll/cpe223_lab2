@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.layout.*;
+import javafx.scene.shape.*;
 
 import java.io.IOException;
 
@@ -14,12 +16,17 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        
-        //scene = new Scene(loadFXML("primary"), 640, 480);
-        //stage.setScene(scene);
-        //stage.show();
 
-        
+        // Polygon
+        Polygon iluvpoland = PolygonConfig.littleHouse();
+        StackPane pain = new StackPane(iluvpoland);
+        // Polygon
+
+        // Display Config
+        scene = new Scene(pain, 640, 480);
+        stage.setScene(scene);
+        stage.show();
+        // Display Config
 
     }
 
@@ -37,3 +44,10 @@ public class App extends Application {
     }
 
 }
+
+/*
+
+    REFERENCES:
+    https://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Polygon.html
+
+*/
