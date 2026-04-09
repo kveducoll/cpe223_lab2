@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -56,7 +57,8 @@ public class App extends Application {
         samurai.setCenterY(100.0f * samuraiSize);
         samurai.setRadius(50.0f   * samuraiSize);
         samurai.setFill(Color.RED);
-        Text circleDesc = Candy.quickText("CIRCLE\n(JAPAN)", dFont, 18, true, "#ffffff");
+        samurai.setEffect(new DropShadow(10, 5, 5, Color.web("#f34ceb")));
+        Text circleDesc = Candy.quickText("CIRCLE\n(JAPAN)", dFont, 18, true, "#ffdbfd");
 
         samurai.setOnMouseClicked(event -> {
 
@@ -66,7 +68,7 @@ public class App extends Application {
                 samurai.setFill(Color.BLACK);
             } else {
                 circleDesc.setText("CIRCLE\n(JAPAN)");
-                circleDesc.setFill(Color.web("#ffffff"));
+                circleDesc.setFill(Color.web("#ffdbfd"));
                 samurai.setFill(Color.RED);
             }
             isToyota[0] = !isToyota[0];
@@ -83,8 +85,8 @@ public class App extends Application {
         footBall.setRadiusX(50.0f * truckSize);
         footBall.setRadiusY(25.0f * truckSize);
         footBall.setFill(Color.web("#ec6b01"));
+        footBall.setEffect(new DropShadow(10, 5, 5, Color.web("#979500")));
         Text ellipseDesc = Candy.quickText("Ellipse\n(Football)", dFont, 18, true, "#ffffff");
-
 
         footBall.setOnMouseClicked(event -> {
 
@@ -114,6 +116,7 @@ public class App extends Application {
         box.getChildren().addAll(poland, japan, america);
 
         scene = new Scene(box, screenX, screenY);
+        stage.setTitle("CPE 223 - Software Design | Laboratory Task 2: INTRODUCTION TO JAVAFX WITH MAVEN");
         stage.setScene(scene);
         stage.show();
         // Display Config
