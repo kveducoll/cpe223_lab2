@@ -2,6 +2,7 @@ package cpe223.karlvince.lab2; // Introduction to JAVAFX with Maven
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -17,6 +18,9 @@ public class App extends Application {
     public static final String dFont = "Verdana Bold";
     public static final int dSize = 18;
 
+    public static final int screenX = 1200;
+    public static final int screenY = 640;
+
     private static Scene scene;
 
     @Override
@@ -26,7 +30,6 @@ public class App extends Application {
         boolean isZabka[] = {true};
         Polygon iluvpoland = PolygonConfig.piatos(4.5);
         Text polyDesc = Candy.quickText("POLYGON\n(PIATOS)", dFont, 18, true, "#0317ca");
-        StackPane pain = new StackPane(iluvpoland, polyDesc);
 
         iluvpoland.setOnMouseClicked(event -> {
 
@@ -44,8 +47,43 @@ public class App extends Application {
         });
         // Polygon
 
+        // Circle
+        int samuraiSize = 3;
+        boolean isToyota[] = {true};
+
+        Circle samurai = new Circle();
+        samurai.setCenterX(100.0f*samuraiSize);
+        samurai.setCenterY(100.0f*samuraiSize);
+        samurai.setRadius(50.0f*samuraiSize);
+        samurai.setFill(Color.RED);
+        Text circleDesc = Candy.quickText("CIRCLE\n(JAPAN)", dFont, 18, true, "#ffffff");
+
+        samurai.setOnMouseClicked(event -> {
+
+            if (isZabka[0]) {
+                circleDesc.setText("JAVA");
+                circleDesc.setFill(Color.WHITE);
+                samurai.setFill(Color.BLACK);
+            } else {
+                circleDesc.setText("CIRCLE\n(JAPAN)");
+                circleDesc.setFill(Color.web("#ffffff"));
+                samurai.setFill(Color.RED);
+            }
+            isZabka[0] = !isZabka[0];
+
+        });
+        // Circle
+        
         // Display Config
-        scene = new Scene(pain, 640, 480);
+        HBox box = new HBox(75);
+        box.setAlignment(Pos.CENTER);
+
+        StackPane poland = new StackPane(iluvpoland, polyDesc);
+        StackPane japan = new StackPane(samurai, circleDesc);
+
+        box.getChildren().addAll(poland, japan);
+
+        scene = new Scene(box, screenX, screenY);
         stage.setScene(scene);
         stage.show();
         // Display Config
