@@ -6,11 +6,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 public class App extends Application {
+
+    public static final String dFont = "Verdana Bold";
+    public static final int dSize = 18;
 
     private static Scene scene;
 
@@ -18,8 +23,25 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
 
         // Polygon
-        Polygon iluvpoland = PolygonConfig.littleHouse();
-        StackPane pain = new StackPane(iluvpoland);
+        boolean isZabka[] = {true};
+        Polygon iluvpoland = PolygonConfig.piatos(4.5);
+        Text polyDesc = Candy.quickText("POLYGON\n(PIATOS)", dFont, 18, true, "#0317ca");
+        StackPane pain = new StackPane(iluvpoland, polyDesc);
+
+        iluvpoland.setOnMouseClicked(event -> {
+
+            if (isZabka[0]) {
+                polyDesc.setText("KARL\nVINCE");
+                polyDesc.setFill(Color.WHITE);
+                iluvpoland.setFill(Color.BLACK);
+                isZabka[0] = false;
+            } else {
+                polyDesc.setText("KARL\nVINCE");
+                polyDesc.setFill(Color.BLACK);
+                iluvpoland.setFill(Color.WHITE);
+                isZabka[0] = true;
+            }
+        });
         // Polygon
 
         // Display Config
@@ -49,5 +71,6 @@ public class App extends Application {
 
     REFERENCES:
     https://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/Polygon.html
+    https://docs.oracle.com/javase/8/javafx/api/javafx/scene/paint/Color.html
 
 */
