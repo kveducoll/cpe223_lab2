@@ -34,13 +34,13 @@ public class App extends Application {
                 polyDesc.setText("KARL\nVINCE");
                 polyDesc.setFill(Color.WHITE);
                 iluvpoland.setFill(Color.BLACK);
-                isZabka[0] = false;
             } else {
-                polyDesc.setText("KARL\nVINCE");
-                polyDesc.setFill(Color.BLACK);
-                iluvpoland.setFill(Color.WHITE);
-                isZabka[0] = true;
+                polyDesc.setText("POLYGON\n(PIATOS)");
+                polyDesc.setFill(Color.web("#0317ca"));
+                iluvpoland.setFill(Color.YELLOW);
             }
+            isZabka[0] = !isZabka[0];
+
         });
         // Polygon
 
