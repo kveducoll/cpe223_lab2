@@ -28,4 +28,27 @@ public class PolygonConfig {
 
     }
 
+    public static Polygon piatos() {return piatos(1, "YELLOW", true, 10, 5, 5, "BLACK");}
+    public static Polygon piatos(double scale) {return piatos(scale, "YELLOW", true, 10, 5, 5, "BLACK");}
+    public static Polygon piatos(String color) {return piatos(1, color, true, 10, 5, 5, "BLACK");}
+    public static Polygon piatos(boolean shadow, double shadowBlurRad, int shadowX, int shadowY) {return piatos(1, "RED", shadow, shadowBlurRad, shadowX, shadowY, "BLACK");}
+
+
+    public static Polygon piatos(double scale, String color, boolean shadow, double shadowBlurRad, int shadowX, int shadowY, String shadowColor) {
+
+        Polygon x = new Polygon(
+            0.0*scale, 70.0*scale,
+            20.0*scale, 100.0*scale,
+            50.0*scale, 100.0*scale,
+            70.0*scale, 70.0*scale,
+            50.0*scale, 40.0*scale,
+            20.0*scale, 40.0*scale
+        );
+
+        x.setFill(Paint.valueOf(color));
+        x.setEffect(new DropShadow(shadowBlurRad, shadowX, shadowY, (Color) Paint.valueOf(shadowColor)));
+        return x;
+
+    }
+
 }
