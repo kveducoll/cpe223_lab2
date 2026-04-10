@@ -1,9 +1,7 @@
 package cpe223.karlvince.lab2; // Introduction to JAVAFX with Maven
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.stage.Stage;
@@ -16,11 +14,11 @@ import java.io.IOException;
 
 public class App extends Application {
 
-    public static final String dFont = "Verdana Bold";
-    public static final int dSize = 18;
+    public static final String DFONT = "Verdana Bold";
+    public static final int DSIZE = 18;
 
-    public static final int screenX = 1200;
-    public static final int screenY = 640;
+    public static final int SCREENX = 1200;
+    public static final int SCREENY = 640;
 
     private static Scene scene;
 
@@ -31,7 +29,7 @@ public class App extends Application {
 
         // Polygon
         Polygon iluvpoland = PolygonConfig.piatos(4.5);
-        Text polyDesc = Candy.quickText("POLYGON\n(PIATOS)", dFont, 18, true, "#0317ca");
+        Text polyDesc = Candy.quickText("POLYGON\n(PIATOS)", DFONT, 18, true, "#0317ca");
 
         iluvpoland.setOnMouseClicked(event -> {
 
@@ -58,7 +56,7 @@ public class App extends Application {
         samurai.setRadius(50.0f   * samuraiSize);
         samurai.setFill(Color.RED);
         samurai.setEffect(new DropShadow(10, 5, 5, Color.web("#f34ceb")));
-        Text circleDesc = Candy.quickText("CIRCLE\n(JAPAN)", dFont, 18, true, "#ffdbfd");
+        Text circleDesc = Candy.quickText("CIRCLE\n(JAPAN)", DFONT, 18, true, "#ffdbfd");
 
         samurai.setOnMouseClicked(event -> {
 
@@ -85,7 +83,7 @@ public class App extends Application {
         footBall.setRadiusY(25.0f * truckSize);
         footBall.setFill(Color.web("#ec6b01"));
         footBall.setEffect(new DropShadow(10, 5, 5, Color.web("#979500")));
-        Text ellipseDesc = Candy.quickText("Ellipse\n(Football)", dFont, 18, true, "#ffffff");
+        Text ellipseDesc = Candy.quickText("Ellipse\n(Football)", DFONT, 18, true, "#ffffff");
 
         footBall.setOnMouseClicked(event -> {
 
@@ -114,21 +112,12 @@ public class App extends Application {
         
         box.getChildren().addAll(poland, japan, america);
 
-        scene = new Scene(box, screenX, screenY);
+        scene = new Scene(box, SCREENX, SCREENY);
         stage.setTitle("CPE 223 - Software Design | Laboratory Task 2: INTRODUCTION TO JAVAFX WITH MAVEN");
         stage.setScene(scene);
         stage.show();
         // Display Config
 
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
